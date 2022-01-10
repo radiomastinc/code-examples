@@ -1,0 +1,15 @@
+curl -v "http://127.0.0.1:5000/listener-auth" \
+     -X POST \
+     -d 'server=127.0.0.1' \
+     -d 'port=80' \
+     -d 'ip=127.0.0.1' \
+     -d 'client=123456' \
+     -d 'user=' \
+     -d 'pass=' \
+     -d 'agent=testing' \
+     -d 'referer=' \
+     -d 'listener-count=0' \
+     -d 'action=listener_add' \
+     -d 'listener-duration-1day=100' \
+     -d 'listener-duration-7day=100' \
+     -d 'mount=/baaec988-4d0b-4ba3-98e6-7edf3566fbd6'
