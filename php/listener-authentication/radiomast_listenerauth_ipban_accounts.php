@@ -70,6 +70,9 @@ $useragent_banlist = array(
     "Some other user agent"
 );
 
+//Make web browsers prompt for username/password.
+header('icecast-www-authenticate: Basic realm="My Radio Station", charset="UTF-8"');
+
 //Check listener IP against the ban list
 if (array_key_exists($ip, $ip_banlist)) {
     //IP is in the banlist, deny it
@@ -78,7 +81,7 @@ if (array_key_exists($ip, $ip_banlist)) {
 }
 
 //Check the user agent against the ban list.
-if (array_key_exists($agent, $useragent_blacklist)) {
+if (array_key_exists($agent, $useragent_banlist)) {
 	//User agent is found in our blacklist - block the listener.
 	header('icecast-auth-user: 0');
 	return;
@@ -86,15 +89,15 @@ if (array_key_exists($agent, $useragent_blacklist)) {
 
 //Validate credentials
 if (array_key_exists($user, $credentials)) {
+
     if ($credentials[$user] === $password) {
         //Credentials match, allow the broadcaster to connect.
         header('icecast-auth-user: 1');
         return;
     }
 }
+
 //Credentials didn't match or weren't found, don't allow the broadcaster to connect.
 header('icecast-auth-user: 0');
-
-
 
 ?>
