@@ -1,4 +1,8 @@
-curl -v "http://127.0.0.1:2016/radiomast_listenerauth.php" \
+#!/bin/bash
+
+# Simulate a request from Radio Mast to your webhook handler. This is useful for testing if your script is working
+# correctly.
+curl -v "http://127.0.0.1:2016/radiomast_listenerauth_token.php" \
      -X POST \
      -d 'server=127.0.0.1' \
      -d 'port=80' \

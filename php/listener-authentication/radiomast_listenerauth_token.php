@@ -7,6 +7,10 @@ Radio Mast Custom Listener Authentication Webhook handler with PHP
 This example is a backend for "Custom Listener Authentication", that allows you to require authentication before listeners
 can tune into your Radio Mast stream.
 
+This example demonstrates authenticating a listener with a URL token, where the query string "?token=foo" must be appended
+to the stream URL in order for a listener to successfully authenticate. We also dynamically choose the preroll that
+will be played before the stream starts.
+
 To use this PHP script, you will need to create a Radio Mast stream and set the "Listener Authentication" to "Custom",
 and then set the URL to point to this script. You need to host this script on your own webserver.
 
